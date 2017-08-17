@@ -8,7 +8,7 @@
         <%= link_to event.name, event_path(event) %>
       </td>
       <td>
-        <%= event.created_at.strftime("%Y/%m/%d %I:%M %p") %>
+        <%= event.created_at.to_s(:ymd) %>
       </td>
     </tr>
     <% end %>
