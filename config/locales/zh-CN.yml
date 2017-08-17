@@ -3,6 +3,7 @@ zh-CN:
     brand: 全栈营 Rails Recipes 前台
     events: 活动一览
     console: 前台面板
+    edit_profile: 修改个人资料
     reset_password: 修改密码
     sign_up: 注册
     sign_in: 登入
