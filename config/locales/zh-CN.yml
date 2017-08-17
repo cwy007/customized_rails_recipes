@@ -1,5 +1,17 @@
 zh-CN:
+  navbar:
+    brand: 全栈营 Rails Recipes 前台
+    events: 活动一览
+    console: 前台面板
+    reset_password: 修改密码
+    sign_up: 注册
+    sign_in: 登入
+    sign_out: 登出
   event_list: 活动列表
   admin:
+    navbar:
+      brand: 全栈营 Rails Recipes 后台
+      events: 活动管理
+      console: 管理员面板
     event_list: 活动列表管理
-  hello: "亲～ %{name} 你好："  
+  hello: "亲～ %{name} 你好："

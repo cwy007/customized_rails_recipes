@@ -20,7 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  navbar:
+    brand: FullStack Rails Recipes User Console
+    events: Events
+    console: User Console
+    reset_password: Reset Password
+    sign_up: Sign Up
+    sign_in: Login
+    sign_out: Logout
   event_list: Event List
   admin:
+    navbar:
+      brand: FullStack Rails Recipes User Admin Console
+      events: Events
+      console: Admin Console
     event_list: Admin Event List
   hello: "Hi %{name},"
