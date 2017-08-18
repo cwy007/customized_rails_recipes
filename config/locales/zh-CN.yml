@@ -1,4 +1,9 @@
 zh-CN:
+  event:
+    status:
+      draft: 草稿
+      public: 公开
+      priate: 私密
   navbar:
     brand: 全栈营 Rails Recipes 前台
     events: 活动一览
