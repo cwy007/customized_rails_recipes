@@ -29,7 +29,8 @@ en:
     brand: FullStack Rails Recipes User Console
     events: Events
     console: User Console
-    edit_time_zone: Edit Time Zone
+    my_profile: My Profile
+    edit_my_profile: Edit My Profile
     reset_password: Reset Password
     sign_up: Sign Up
     sign_in: Login

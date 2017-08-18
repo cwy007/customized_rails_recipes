@@ -8,7 +8,8 @@ zh-CN:
     brand: 全栈营 Rails Recipes 前台
     events: 活动一览
     console: 前台面板
-    edit_time_zone: 修改时区
+    my_profile: 我的个人资料
+    edit_my_profile: 修改个人资料
     reset_password: 修改密码
     sign_up: 注册
     sign_in: 登入
