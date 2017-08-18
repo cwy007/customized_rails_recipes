@@ -39,6 +39,7 @@ en:
     navbar:
       brand: FullStack Rails Recipes User Admin Console
       events: Events
+      users: Users Manage
       console: Admin Console
     event_list: Admin Event List
   hello: "Hi %{name},"
