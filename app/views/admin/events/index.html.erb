@@ -7,12 +7,14 @@
 <table class="table">
 <tr>
   <th>Event Name</th>
+  <th>Status</th>
   <th>Category</th>
   <th>Actions</th>
 </tr>
 <% @events.each do |event| %>
   <tr>
     <td><%= link_to event.name, admin_event_path(event) %></td>
+    <td><%= t(event.status, :scope => "event.status") %></td>
     <td><%= event.category.try(:name) %></td>
     <td>
       <%= link_to "Edit", edit_admin_event_path(event), :class => "btn btn-default" %>
