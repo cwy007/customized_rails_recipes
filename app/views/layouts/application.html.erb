@@ -43,7 +43,7 @@
                     <li><%= link_to "中文", :controller => controller_name, :action => action_name, :locale => "zh-CN" %></li>
                   <% end %>
                   <li><%= link_to(t("admin.navbar.console"), admin_events_path) %></li>
-                  <li><%= link_to(t("navbar.edit_profile"), edit_user_path) %></li>
+                  <li><%= link_to(t("navbar.edit_time_zone"), edit_user_path) %></li>
                   <li><%= link_to(t("navbar.reset_password"), edit_registration_path(:user)) %></li>
                   <li><%= link_to(t("navbar.sign_out"), destroy_user_session_path, :method => :delete) %></li>
                 </ul>
