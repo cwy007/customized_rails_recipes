@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  belongs_to :category, :optional => true 
 
   validates_presence_of :name, :friendly_id
 
@@ -9,7 +10,7 @@ class Event < ApplicationRecord
 
   STATUS = ["draft", "public", "private"]
   validates_inclusion_of :status, :in => STATUS
-  
+
   def to_param
     self.friendly_id
   end

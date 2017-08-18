@@ -24,7 +24,7 @@ en:
     status:
       draft: DRAFT
       public: PUBLIC
-      priate: PRIVATE
+      private: PRIVATE
   navbar:
     brand: FullStack Rails Recipes User Console
     events: Events
