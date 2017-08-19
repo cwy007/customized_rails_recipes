@@ -43,4 +43,4 @@ en:
       users: Users Manage
       console: Admin Console
     event_list: Admin Event List
-  hello: "Hi %{name},"
+  hello: "Hi! %{name}"
