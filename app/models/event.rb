@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
-  belongs_to :category, :optional => true 
+  has_many :tickets, :dependent => :destroy 
+  belongs_to :category, :optional => true
 
   validates_presence_of :name, :friendly_id
 
