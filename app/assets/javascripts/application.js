@@ -19,6 +19,6 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 //= require_tree .
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
   $("textarea").autosize();
 });

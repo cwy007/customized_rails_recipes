@@ -2,6 +2,7 @@
 
 <p>
   <%= link_to "打開前台", event_path(@event), :target => "_blank", :class => "btn btn-primary" %>
+  <%= link_to "Edit", edit_admin_event_path(@event), :class => "btn btn-primary" %>
 </p>
 
 <%= sanitize @event.description %>
