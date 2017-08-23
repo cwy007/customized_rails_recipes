@@ -5,7 +5,7 @@
 
 <div class="form-group">
   <% if action_name == "step1" %>
-    <%= link_to "Cancel", event_registration_path(@event, @registration), :class => "btn btn-default" %>
+    <%= link_to "Show", event_registration_path(@event, @registration), :class => "btn btn-default" %>
   <% end %>
 
   <%= f.submit "Save and Next", :class => "btn btn-primary" %>

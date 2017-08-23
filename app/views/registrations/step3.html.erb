@@ -6,7 +6,7 @@
 
   <div class="form-group <%= (f.object.errors[:website].any?)? "has-error" : "" %>">
     <%= f.label :website, :class => "control-label"%>
-    <%= f.url_field :website, :class => "form-control" %>
+    <%= f.url_field :website, :class => "form-control", :autofocus => true %>
 
     <% if f.object.errors[:website] %>
       <span class="help-block"><%= safe_join(f.object.errors[:website], "、") %></span>
@@ -15,7 +15,7 @@
 
   <div class="form-group <%= (f.object.errors[:bio].any?)? "has-error" : "" %>">
     <%= f.label :bio, :class => "control-label" %>
-    <%= f.text_area :bio, :class => "form-control" %>
+    <%= f.text_area :bio, :class => "form-control", :required => true %>
 
     <% if f.object.errors[:bio] %>
       <span class="help-block"><%= safe_join(f.object.errors[:bio], "、") %></span>
