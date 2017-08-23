@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resources :registrations do
       member do
         get 'steps/2' => 'registrations#step2', :as => :step2
-        get 'steps/2/update' => 'registrations#step2_update', :as => :update_step2
+        patch 'steps/2/update' => 'registrations#step2_update', :as => :update_step2 # NOTE patch vs post
         get 'steps/3' => 'registrations#step3', :as => :step3
-        get 'steps/3/update' => 'registrations#step3_update', :as => :update_step3
+        patch 'steps/3/update' => 'registrations#step3_update', :as => :update_step3 # NOTE patch
       end
     end
   end
