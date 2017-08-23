@@ -7,7 +7,8 @@
 //= require nested_form_fields
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
-//=require ckeditor/init
+//= require ckeditor/init
+//= require jquery-ui 
 
 $(document).on('turbolinks:load', function() {
   $("textarea").autosize();
