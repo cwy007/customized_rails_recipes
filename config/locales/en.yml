@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  registration:
+    status:
+      pending: Pending
+      confirmed: Confirmed
   bulk_update: Bulk Update
   bulk_delete: Bulk Delete
   event:
