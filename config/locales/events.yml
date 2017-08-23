@@ -3,6 +3,8 @@
 
 zh-CN:
   activerecord:
+    models:
+      event: 活动
     attributes:
       event:
         name: "活动名称"

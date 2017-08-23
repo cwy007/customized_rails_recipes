@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      registration: 注册
+    attributes:
+      registration:
+        name: 姓名
+        status: 注册状态
+        email: 邮箱
+        cellphone: 电话
+        website: 网站
+        bio: 个人简介
