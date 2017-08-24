@@ -1,4 +1,17 @@
-<h1>Admin Users</h1>
+<h1 class="text-center">Admin Users</h1>
+
+<div class="row" style="margin-bottom: 30px;">
+  <div class="col-md-4">
+    <%= search_form_for @q, :url => admin_users_path do |f| %>
+      <div class="input-group">
+        <%= f.search_field :email_cont, :placeholder => "E-mail", :class => "form-control" %>
+        <div class="input-group-btn">
+          <%= f.submit :class => "btn btn-default" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <table class="table">
   <tr>
@@ -16,8 +29,10 @@
         <%= g.name %> <br>
       <% end %>
     </td>
-    <td><%= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-default" %></td>
-    <td><%= link_to "Edit Profile", edit_admin_user_profile_path(user), :class => "btn btn-default" %></td>
+    <td>
+      <%= link_to "Edit", edit_admin_user_path(user), :class => "btn btn-default" %>
+      <%= link_to "Edit Profile", edit_admin_user_profile_path(user), :class => "btn btn-default" %>
+    </td>
   </tr>
   <% end %>
 </table>

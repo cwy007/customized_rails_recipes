@@ -1,7 +1,8 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = User.includes(:groups).all 
+    @q = User.ransack(params[:q])
+    @users = @q.result.includes(:groups).all  # NOTE association group is used in users/index page, so there is includes(:groups) 
   end
 
   def edit
