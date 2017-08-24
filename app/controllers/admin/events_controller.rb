@@ -10,7 +10,7 @@ class Admin::EventsController < AdminController
 
     if Array(params[:category_ids]).any?
       @events = @events.by_category(params[:category_ids])
-    end 
+    end
   end
 
   def show
@@ -94,7 +94,7 @@ class Admin::EventsController < AdminController
   protected
 
   def event_params
-    params.require(:event).permit(:name, :description, :friendly_id, :status, :category_id, :tickets_attributes => [:id, :name, :description, :price, :_destroy])
+    params.require(:event).permit(:name, :logo, :remove_logo, :description, :friendly_id, :status, :category_id, :tickets_attributes => [:id, :name, :description, :price, :_destroy])
   end
 
 end

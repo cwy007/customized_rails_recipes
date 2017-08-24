@@ -39,6 +39,16 @@
   <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
 </div>
 
+<div class="from-group">
+  <%= f.label :logo %>
+  <%= f.file_field :logo, :class => "form-control" %>
+  <% if f.object.logo.present? %>
+    <label>
+      <%= f.check_box :remove_logo %> 删除图档
+    </label>
+    <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
+  <% end %>
+</div>
 <div class="form-group">
   <%= f.label :description %>
   <%= f.cktext_area :description, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini', language: 'zh-CN' } %>
