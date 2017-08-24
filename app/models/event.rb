@@ -23,8 +23,11 @@ class Event < ApplicationRecord
     self.friendly_id
   end
 
-  scope :by_status, ->(s){ where(:status => s) }
-  scope :by_category, ->(c){ where(:category_id => c) }
+  scope :by_status, ->(s){ where( :status => s ) }
+  scope :by_category, ->(c){ where( :category_id => c ) }
+
+  scope :only_public, -> { where( :status => "public" ) }
+  scope :only_available, -> { where( :status => ["public", "private"] ) }
 
   protected
 
