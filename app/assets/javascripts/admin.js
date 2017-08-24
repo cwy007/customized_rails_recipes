@@ -10,6 +10,7 @@
 //= require ckeditor/init
 //= require jquery-ui
 //= require validator.min
+//= require bootstrap-filestyle.min
 
 $(document).on('turbolinks:load', function() {
   $("textarea").autosize();

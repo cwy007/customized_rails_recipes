@@ -49,6 +49,7 @@
     <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
   <% end %>
 </div>
+
 <div class="form-group">
   <%= f.label :description %>
   <%= f.cktext_area :description, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini', language: 'zh-CN' } %>
@@ -82,4 +83,14 @@
 
 <script type="text/javascript">
   $("#event_category_id").select2( { theme: "bootstrap" } );
+
+  // js for file upload button
+  $("#event_logo").filestyle({
+    input: false,
+    buttonText: "上传活动 logo 图片",
+    buttonName: "btn-primary",
+    size: "sm",
+    iconName: "glyphicon glyphicon-piture"
+  });
+
 </script>
