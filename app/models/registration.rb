@@ -20,6 +20,9 @@ class Registration < ApplicationRecord
     self.uuid
   end
 
+  scope :by_status, ->(s){ where(:status => s) }
+  scope :by_ticket, ->(t){ where(:ticket_id => t) }
+  
   protected
 
   def check_event_status
@@ -27,7 +30,7 @@ class Registration < ApplicationRecord
       errors.add(:base, "活动尚未开始报名")
     end
   end
-  
+
   def should_validate_basic_data?
     current_step == 2
   end

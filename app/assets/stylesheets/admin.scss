@@ -5,6 +5,7 @@
 @import "bootstrap-datepicker3";
 @import "jquery-ui";
 
+// styles for admin/events/index
 .sortable .sortable_icon {
   border: none;
   color: #ECECEC;
@@ -15,4 +16,10 @@
 
 .sortable .sortable_icon:hover{
   color: #C9302C;
+}
+
+// styles for admin/event/registrations/index
+
+.submenu {
+  margin-bottom: 10px;
 }
