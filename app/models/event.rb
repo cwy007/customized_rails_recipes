@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   ranks :row_order
 
   has_many :registrations, :dependent => :destroy
-  
+
   has_many :tickets, :dependent => :destroy, :inverse_of => :event
   accepts_nested_attributes_for :tickets, :allow_destroy => true, :reject_if => :all_blank
 
@@ -22,6 +22,9 @@ class Event < ApplicationRecord
   def to_param
     self.friendly_id
   end
+
+  scope :by_status, ->(s){ where(:status => s) }
+  scope :by_category, ->(c){ where(:category_id => c) }
 
   protected
 

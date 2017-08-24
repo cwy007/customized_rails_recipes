@@ -2,6 +2,15 @@ class Admin::EventsController < AdminController
 
   def index
     @events = Event.rank(:row_order).all
+    @categories = Category.all
+
+    if Array(params[:statuses]).any?
+      @events = @events.by_status(params[:statuses])
+    end
+
+    if Array(params[:category_ids]).any?
+      @events = @events.by_category(params[:category_ids])
+    end 
   end
 
   def show
