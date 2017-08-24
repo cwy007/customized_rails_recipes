@@ -19,14 +19,26 @@
   <div class="btn-group">
     <%= link_to "Ticket: ", "#", :class => "btn btn-default disabled" %>
     <%= link_to "全部 (#{@event.registrations.size})", admin_event_registrations_path(registration_filters( :ticket_id => nil )),
-    :class => "btn btn-default #{(params[:ticket_id].blank?) ? "active" : ""}" %>
-    <% @event.tickets.each do |t| %>
+                :class => "btn btn-default #{(params[:ticket_id].blank?) ? "active" : ""}" %>
+                <% @event.tickets.each do |t| %>
     <%= link_to t.name + " (#{@event.registrations.by_ticket(t).size})",
-    admin_event_registrations_path(registration_filters( :ticket_id => t.id )),
-    :class => "btn btn-default #{(params[:ticket_id].to_i == t.id) ? "active" : ""}" %>
+                admin_event_registrations_path(registration_filters( :ticket_id => t.id )),
+                :class => "btn btn-default #{(params[:ticket_id].to_i == t.id) ? "active" : ""}" %>
     <% end %>
   </div>
 </div>
+
+<%= form_tag admin_event_registrations_path, :method => :get do %>
+  <p>
+    报名日期：<%= date_field_tag :start_on, params[:start_on] %>～<%= date_field_tag :end_on, params[:end_on] %> <!-- NOTE name: :end_on, value: params[:end_on] -->
+  </p>
+
+  <p class="text-right">
+    <%= submit_tag t("admin.submit_filter"), :class => "btn btn-primary" %>
+  </p>
+
+<% end %>
+
 <table class="table">
   <tr>
     <th>ID</th>
