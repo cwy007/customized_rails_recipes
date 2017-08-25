@@ -28,32 +28,42 @@
             <ul class="nav navbar-nav">
               <li class="<%= ( current_page?(events_path) )? 'active' : '' %>"><%= link_to t("navbar.events"), events_path %></li>
             </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <% if current_user %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-user"></span>
-                  <%= t("hello", :name => current_user.display_name) %>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <% if I18n.locale == "zh-CN".to_sym %>
-                    <li><%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %></li>
-                  <% else %>
-                    <li><%= link_to "中文", :controller => controller_name, :action => action_name, :locale => "zh-CN" %></li>
-                  <% end %>
-                  <li><%= link_to(t("admin.navbar.console"), admin_events_path) %></li>
-                  <li><%= link_to(t("navbar.my_profile"), user_path) %></li>
-                  <li><%= link_to(t("navbar.edit_my_profile"), edit_user_path) %></li>
-                  <li><%= link_to(t("navbar.reset_password"), edit_registration_path(:user)) %></li>
-                  <li><%= link_to(t("navbar.sign_out"), destroy_user_session_path, :method => :delete) %></li>
-                </ul>
-              </li>
-            <% else %>
-              <li><%= link_to(t("navbar.sign_up"), new_registration_path(:user)) %></li>
-              <li><%= link_to(t("navbar.sign_in"), new_session_path(:user)) %></li>
-            <% end %>
-          </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <!-- <% if current_user && current_user.logo.present? %>
+                <li><%= image_tag(current_user.logo.url(:thumb), :style => "border-radius: 50%; display: inline; margin: 5px -10px 5px auto; height: 40px; width: 40px;  position:relative; z-index: 4;") %></li>
+              <% end %> -->
+              <% if current_user %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <% if current_user.logo.present? %>
+                      <%= image_tag(current_user.logo.url(:thumb)) %>
+                      <%= current_user.display_name %>
+                    <% else %>
+                      <span class="glyphicon glyphicon-user"></span>
+                      <%= t("hello", :name => current_user.display_name) %>
+                    <% end %>
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to(t("admin.navbar.console"), admin_events_path) %></li>
+                    <li role="separator" class="divider"></li>
+                    <% if I18n.locale == "zh-CN".to_sym %>
+                      <li><%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %></li>
+                    <% else %>
+                      <li><%= link_to "中文", :controller => controller_name, :action => action_name, :locale => "zh-CN" %></li>
+                    <% end %>
+                    <li><%= link_to(t("navbar.my_profile"), user_path) %></li>
+                    <li><%= link_to(t("navbar.edit_my_profile"), edit_user_path) %></li>
+                    <li><%= link_to(t("navbar.reset_password"), edit_registration_path(:user)) %></li>
+                    <li role="separator" class="divider"></li>
+                    <li><%= link_to(t("navbar.sign_out"), destroy_user_session_path, :method => :delete) %></li>
+                  </ul>
+                </li>
+              <% else %>
+                <li><%= link_to(t("navbar.sign_up"), new_registration_path(:user)) %></li>
+                <li><%= link_to(t("navbar.sign_in"), new_session_path(:user)) %></li>
+              <% end %>
+            </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>

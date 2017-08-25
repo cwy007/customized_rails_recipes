@@ -1,5 +1,8 @@
 <div class="row">
   <h1 class="text-center">我的个人资料</h1>
+  <p><%= link_to t("navbar.edit_my_profile"), edit_user_path, :class => "btn btn-primary pull-right"%></p>
+  <div class="clearfix"></div>
+  
   <hr>
   <div class="col-md-5">
     <% if @user.logo.present? %>
