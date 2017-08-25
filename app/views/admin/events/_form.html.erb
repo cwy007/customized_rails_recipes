@@ -1,11 +1,10 @@
 <% if @event.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this person from being saved:</h2>
-
+    <h2><%= t('errors.template.header', :model => Event.model_name.human, :count => @event.errors.count) %></h2>
     <ul>
-    <% @event.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
@@ -39,14 +38,26 @@
   <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
 </div>
 
+<div class="form-group">
+  <label>My Logo URL:</label>
+  <p><%= f.text_field :remote_logo_url, :placeholder => "Logo 图片网址: https://www.example.com/.../picture.jpg", :class => "form-control" %></p>
+</div>
+
 <div class="from-group">
-  <%= f.label :logo %>
-  <%= f.file_field :logo, :class => "form-control" %>
+  <p>
+    <%= f.label :logo %>
+    <%= f.file_field :logo, :class => "form-control" %>
+  </p>
+
+  <%= link_to image_tag(@event.logo.url(:small), :class => "thumbnail", :style => "display: inline;"), @event.logo.url, :target => "_blank" if @event.logo? %>
+
   <% if f.object.logo.present? %>
-    <label>
-      <%= f.check_box :remove_logo %> 删除图档
-    </label>
-    <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
+    <p>
+      <label>
+        <%= f.check_box :remove_logo %> 删除图档
+      </label>
+      <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
+    </p>
   <% end %>
 </div>
 
@@ -74,7 +85,7 @@
     </div>
 
   </fieldset>
-  <%= ff.remove_nested_fields_link "移除这个票种", :class => "btn btn-danger" %>
+  <%= ff.remove_nested_fields_link "移除这个票种", :class => "btn btn-danger btn-sm" %>
 <% end %>
 
 <p class="text-right">
@@ -87,10 +98,10 @@
   // js for file upload button
   $("#event_logo").filestyle({
     input: false,
-    buttonText: "上传活动 logo 图片",
-    buttonName: "btn-primary",
+    buttonText: "从本地上传活动 logo 图片",
+    buttonName: "btn-info",
     size: "sm",
-    iconName: "glyphicon glyphicon-piture"
+    iconName: "glyphicon glyphicon-picture"
   });
 
 </script>

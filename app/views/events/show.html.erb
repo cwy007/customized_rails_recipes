@@ -1,8 +1,9 @@
-<h1><%= @event.name %></h1>
-
-<% if @event.logo.present? %>
-  <%= link_to image_tag(@event.logo.url(:thumb)), @event.logo.url, :target => "_blank" %>
-<% end %>
+<h1 class="text-center">
+  <% if @event.logo.present? %>
+    <%= link_to image_tag(@event.logo.url(:thumb), :class => "thumbnail", :style => "border-radius: 50%; display: inline; margin: auto; height: 60px; width: 60px;"), @event.logo.url, :target => "_blank" %>
+  <% end %>
+  <%= @event.name %>
+</h1>
 
 <h2><%= t(@event.status, :scope => "event.status") %></h2>
 
