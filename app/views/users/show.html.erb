@@ -1,6 +1,19 @@
-<h1>我的个人资料</h1>
+<div class="row">
+  <h1 class="text-center">我的个人资料</h1>
+  <hr>
+  <div class="col-md-5">
+    <% if @user.logo.present? %>
+      <%= link_to image_tag(@user.logo.url(:medium), :class => "thumbnail", :style => "display: inline;"), @user.logo.url, :target => "_blank" %>
+    <% else %>
+      <%= image_tag("http://placehold.it/400x400", :class => "thumbnail") %>
+    <% end %>
+  </div>
 
-<p>Email: <%= @user.email %></p>
-<p>Timezone: <%= @user.time_zone %></p>
-<p>Birthday: <%= @user.profile.birthday %></p>
-<p>Bio: <%= simple_format @user.profile.bio %></p>
+  <div class="col-md-7">
+    <p><strong>Email: </strong> <%= @user.email %></p>
+    <p><strong>Timezone: </strong><%= @user.time_zone %></p>
+    <p><strong>Birthday: </strong><%= @user.profile.birthday %></p>
+    <p><strong>Bio: </strong> <%= simple_format @user.profile.bio %></p>
+  </div>
+</div>
+<hr>

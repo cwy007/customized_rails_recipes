@@ -2,6 +2,7 @@
 
 <% if @user.errors.any? %>
   <div id="error_explanation">
+    <h2><%= t('errors.template.header', :model => User.model_name.human, :count => @user.errors.count) %></h2>
     <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

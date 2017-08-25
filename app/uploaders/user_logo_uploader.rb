@@ -30,8 +30,17 @@ class UserLogoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  
   version :thumb do
-    process resize_to_fit: [50, 50]  # NOTE resize_to_fit & resize_to_limit 保持原图比例
+    process resize_to_fill: [200, 200]  # NOTE resize_to_fit & resize_to_limit 保持原图比例
+  end
+
+  version :small do
+    process resize_to_fit: [100, 100]
+  end
+
+  version :medium do
+    process resize_to_fit: [400, 400]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

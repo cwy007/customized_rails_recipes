@@ -1,10 +1,39 @@
 <h2>Edit User</h2>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= t('errors.template.header', :model => User.model_name.human, :count => @user.errors.count) %></h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @user do |f| %>
 
   <div class="form-group">
     <%= f.label :time_zone %>
     <%= f.time_zone_select :time_zone %>
+  </div>
+
+  <div class="form-group">
+    <p>
+      <%= f.label :logo %>
+      <%= f.file_field :logo, :class => "form-control" %>
+    </p>
+
+    <% if @user.logo.present? %>
+      <%= link_to image_tag(@user.logo.url(:small), :class => "thumbnail", :style => "display: inline;"), @user.logo.url, :target => "_blank" %>
+
+      <p>
+        <label>
+          <%= f.check_box :remove_logo %> 移除图片
+          <%= f.object.logo.filename %>
+        </label>
+      </p>
+    <% end %>
   </div>
 
   <%= f.fields_for :profile do |ff| %>
@@ -54,5 +83,14 @@
   $("#user_profile_attributes_birthday").datepicker({
     format: "yyyy-mm-dd",
     language: "<%= I18n.locale %>"
+   });
+
+   // js for file upload button
+   $("#user_logo").filestyle({
+     input: false,
+     buttonText: "上传头像",
+     buttonName: "btn-info",
+     size: "sm",
+     iconName: "glyphicon glyphicon-picture"
    });
 </script>
