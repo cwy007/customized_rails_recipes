@@ -2,21 +2,44 @@
 @import "bootstrap";
 @import "bootstrap-datepicker3";
 
+// website common styles
+body {
+  a {
+    color: #03A9F4;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:active {
+    color: #0288D1;
+    text-decoration: none;
+  }
+
+}
+
+// styles for navbar
 nav.navbar.navbar-default {
+  // background-image: image-url('/images/citygirl.jpg');
+  background-color: #e5e5e5;
+
+
+  // styles for navbar links
   a {
     color: #000;
   }
-  a:hover {
+
+  // styles for navbar link:selected
+  div.navbar-header > span.selected > a,
+  #navbar > ul:nth-child(1) > li.selected > a ,
+  #navbar > ul.nav.navbar-nav.navbar-right > li.selected> a,
+  #navbar > ul.nav.navbar-nav.navbar-right > li.dropdown.open > a {
+    background-color: #1ecd97;
     color: #fff;
   }
-  background-image: image-url('/images/citygirl.jpg');
-  // styles for navbar user logo
-  #navbar > ul.nav.navbar-nav.navbar-right {
-    li.dropdown.open > a {
-      background-color: transparent;
-      color: #fff;
-    }
 
+  #navbar > ul.nav.navbar-nav.navbar-right {
+
+    // styles for navbar user logo
     li > a {
       img {
         border-radius: 50%;
@@ -25,16 +48,15 @@ nav.navbar.navbar-default {
         margin: -14px 0;
       }
     }
+
   //styles for dropdown-menu
     li > ul {
       top: 120%;
       background-image: image-url('/images/citygirl.jpg');
       li > a:hover {
-        background-color: #000;
-        // color: #000;
+        background-color: #1ecd97;
+        color: #fff;
       }
-      // background-size: cover;
-      // background-repeat: no-repeat;
     }
 
     li > ul::before {

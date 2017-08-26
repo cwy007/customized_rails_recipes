@@ -19,19 +19,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/admin/"><%= t("admin.navbar.brand") %></a>
+          <span class="<%= ( current_page?(admin_root_path) )? 'selected' : '' %>" >
+            <a class="navbar-brand" href="/admin/"><%= t("admin.navbar.brand") %></a>
+          </span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="<%= ( current_page?(admin_events_path) )? 'active' : '' %>"><%= link_to(t("admin.navbar.events"), admin_events_path) %></li>
-            <li class="<%= ( current_page?(admin_users_path) )? 'active' : '' %>"><%= link_to(t("admin.navbar.users"), admin_users_path) %></li>
+            <li class="<%= ( current_page?(admin_events_path) )? 'selected' : '' %>"><%= link_to(t("admin.navbar.events"), admin_events_path) %></li>
+            <li class="<%= ( current_page?(admin_users_path) )? 'selected' : '' %>"><%= link_to(t("admin.navbar.users"), admin_users_path) %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-user"></span>
-                  <%= t("hello", :name => current_user.display_name) %>
+                  <% if current_user.logo.present? %>
+                    <%= image_tag(current_user.logo.url(:thumb)) %>
+                    <%= current_user.display_name %>
+                  <% else %>
+                    <span class="glyphicon glyphicon-user"></span>
+                    <%= t("hello", :name => current_user.display_name) %>
+                  <% end %>
                   <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to t("navbar.console"), root_path %></li>
@@ -48,7 +55,7 @@
                 </ul>
               </li>
             <% else %>
-              <li><%= link_to(t("navbar.sign_up"), new_registration_path(:user)) %></li>
+              <li ><%= link_to(t("navbar.sign_up"), new_registration_path(:user)) %></li>
               <li><%= link_to(t("navbar.sign_in"), new_session_path(:user)) %></li>
             <% end %>
           </ul>
