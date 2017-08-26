@@ -11,7 +11,6 @@
   <body>
     <div class="container">
 
-
       <!-- Static navbar -->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -29,9 +28,6 @@
               <li class="<%= ( current_page?(events_path) )? 'active' : '' %>"><%= link_to t("navbar.events"), events_path %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <!-- <% if current_user && current_user.logo.present? %>
-                <li><%= image_tag(current_user.logo.url(:thumb), :style => "border-radius: 50%; display: inline; margin: 5px -10px 5px auto; height: 40px; width: 40px;  position:relative; z-index: 4;") %></li>
-              <% end %> -->
               <% if current_user %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
