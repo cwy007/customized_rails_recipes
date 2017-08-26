@@ -9,6 +9,20 @@
 
 <h2><%= @event.category.try(:name) %></h2>
 
+<h2>Event Images</h2>
+<% if @event.images.present? %>
+  <% @event.images.each do |image| %>   <!-- NOTE image_tag -->
+    <%= link_to image_tag(image.url(:small), :class => "thumbnail thumbnail-sm", :style => "display: inline;"), image.url, :target => "_blank" %>
+  <% end %>
+<% end %>
+
+<h2>Attachments</h2>
+<ul>
+  <% @event.attachments.each do |a| %>
+    <li><%= link_to a.description, a.attachment.url, :target => "_blank" %></li>
+  <% end %>
+</ul>
+<hr>
 <%= sanitize @event.description %>
 
 <p><%= link_to "开始报名", new_event_registration_path(@event), :class => "btn btn-primary" %></p>

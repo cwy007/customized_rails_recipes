@@ -18,7 +18,7 @@ gem 'rails-i18n'
 gem "devise-i18n"
 # Use select2-rails for beautifing f.select UI
 gem "select2-rails"
-# Use nested_form_fields for implementing User and Profile model nested form
+# Use nested_form_fields automatically add event ticket form 
 gem "nested_form_fields"
 # Use bootstrap-datepicker-rails for beautifing date form field UI
 gem 'bootstrap-datepicker-rails'

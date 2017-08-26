@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datepicker3";
+@import "event";
 
 // website common styles
 body {
@@ -14,14 +15,11 @@ body {
     color: #0288D1;
     text-decoration: none;
   }
-
 }
 
 // styles for navbar
 nav.navbar.navbar-default {
-  // background-image: image-url('/images/citygirl.jpg');
   background-color: #e5e5e5;
-
 
   // styles for navbar links
   a {
