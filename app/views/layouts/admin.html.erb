@@ -27,6 +27,7 @@
           <ul class="nav navbar-nav">
             <li class="<%= ( current_page?(admin_events_path) )? 'selected' : '' %>"><%= link_to(t("admin.navbar.events"), admin_events_path) %></li>
             <li class="<%= ( current_page?(admin_users_path) )? 'selected' : '' %>"><%= link_to(t("admin.navbar.users"), admin_users_path) %></li>
+            <li><%= link_to t("navbar.console"), root_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>

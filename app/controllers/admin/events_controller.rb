@@ -27,6 +27,7 @@ class Admin::EventsController < AdminController
     @event = Event.new(event_params)
 
     if @event.save
+      flash[:notice] = "活动 #{@event.name} 新建成功"
       redirect_to admin_events_path
     else
       render "new"
@@ -43,6 +44,7 @@ class Admin::EventsController < AdminController
     @event = Event.find_by_friendly_id!(params[:id])
 
     if @event.update(event_params)
+      flash[:notice] = "活动 #{@event.name} 修改成功"
       redirect_to admin_events_path
     else
       render "edit"
@@ -53,12 +55,13 @@ class Admin::EventsController < AdminController
     @event = Event.find_by_friendly_id!(params[:id])
     @event.destroy
 
+    flash[:alert] = "活动 #{@event.name} 已删除"
     redirect_to admin_events_path
   end
 
   def bulk_update
     total = 0
-    Array(params[:ids]).each do |event_id|
+    Array(params[:ids]).each do |event_id|  # NOTE Array() = [] 
       event = Event.find(event_id)
 
       if params[:commit] == I18n.t(:bulk_update)
