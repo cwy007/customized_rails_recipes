@@ -1,0 +1,29 @@
+<h1 class="text-center"><%= @event.name %> / Attachments</h1></h1>
+
+<div>
+  <%= link_to "New Attachment", new_admin_event_attachment_path(@event), :class => "btn btn-primary pull-right" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Attachment</th>
+      <th width="60%;">Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attachments.each do |attachment| %>
+      <tr>
+        <td><%= link_to attachment.id, admin_event_attachment_path(@event, attachment) %></td>
+        <td><%= link_to image_tag(attachment.attachment.url(:small), :class => "event-attachment"), admin_event_attachment_path(@event, attachment) %></td>
+        <td><%= attachment.description %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_event_attachment_path(@event, attachment), :class => "btn btn-default btn-sm" %>
+          <%= link_to "Delete", admin_event_attachment_path(@event, attachment), :method => :delete, :class => "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,8 @@
+<h1 class="text-center"><%= @event.name %> / New Attachment</h1>
+
+<%= form_for [:admin, @attachment] do |f| %>
+
+  <%= render :partial => "form", :locals => { :f => f } %>
+  
+  <%= f.submit "Submit", :data => { :disable_with => "Submitting" }, :class => "btn btn-primary" %>
+<% end %>

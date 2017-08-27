@@ -2,6 +2,27 @@
   height: 50px;
 }
 
+.thumbnail-md {
+  height: 200px;
+}
+
+// styles for event attachment
+// body > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > a > img
+// body > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > a > img
+img.event-attachment {
+  border-radius: 15%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0;
+}
+
+// styles for event attachment description
+.danger {
+  background-color: #DDFFDD;
+  border-left: 6px solid #4CAF50;
+  padding: 3px 6px 3px 6px;
+}
+
 // styles for Event images model
   .img-toggle{
     margin: 0px auto;
