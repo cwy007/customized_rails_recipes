@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :events do
       resources :registrations, :controller => "event_registrations"
       resources :tickets, :controller => "event_tickets"
+      resources :attachments, :controller => "event_attachments"
 
       collection do
         post :bulk_update

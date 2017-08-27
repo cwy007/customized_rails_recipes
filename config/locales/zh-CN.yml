@@ -43,6 +43,7 @@ zh-CN:
     delete: 删除
     registrations: 注册者
     tickets: 票型
+    attachments: 活动图片
     navbar:
       brand: 全栈营 Rails Recipes 后台
       events: 活动管理

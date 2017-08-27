@@ -64,6 +64,7 @@ en:
     delete: Delete
     registrations: Registrations
     tickets: Tickets
+    attachments: Attachments
     navbar:
       brand: FullStack Rails Recipes User Admin Console
       events: Events
