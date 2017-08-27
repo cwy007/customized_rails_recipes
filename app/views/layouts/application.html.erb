@@ -9,10 +9,10 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container" id="wrapper">
 
       <!-- Static navbar -->
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default" id="header">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -66,13 +66,14 @@
         </div><!--/.container-fluid -->
       </nav>
 
-      <%= render "common/flashes" %>
+      <div id="content">
+        <%= render "common/flashes" %>
+        <%= yield %>
+      </div>
 
-      <%= yield %>
-
-      <%= link_to "FAQ", faq_path %>
-      <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-CN" %>
-      <%= link_to "English", :controller => controller_name, :action => action_name, :locale => "en" %>
+      <div id="footer">
+        <%= render "common/footer" %>
+      </div>
     </div>
   </body>
 </html>
