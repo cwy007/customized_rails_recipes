@@ -9,20 +9,58 @@
 
 <h2><%= @event.category.try(:name) %></h2>
 
+<!-- Event Images -->
 <h2>Event Images</h2>
 <% if @event.images.present? %>
-  <% @event.images.each do |image| %>   <!-- NOTE image_tag -->
-    <%= link_to image_tag(image.url(:small), :class => "thumbnail thumbnail-sm", :style => "display: inline;"), image.url, :target => "_blank" %>
+
+  <% @event.images.each_with_index do |image, i| %>
+    <!-- Trigger the modal with a button -->
+    <span href="" data-toggle="modal" data-target="#myModal">
+      <%= image_tag(image.url, :class => "img-toggle thumbnail thumbnail-sm", :style => "display: inline; cursor: pointer;") %>
+    </span>
   <% end %>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal fade event-images" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="display: block;"><%= @event.name %></h4>
+        </div>
+        <div class="modal-body">
+          <image id="img-modal" class="image-response" src="" style="width: 100%;" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 <% end %>
 
 <h2>Attachments</h2>
-<ul>
   <% @event.attachments.each do |a| %>
-    <li><%= link_to a.description, a.attachment.url, :target => "_blank" %></li>
+    <%= link_to image_tag(a.attachment.url(:small), :class => "event-attachment"), a.attachment.url, :target => "_blank" %>
   <% end %>
-</ul>
 <hr>
 <%= sanitize @event.description %>
 
+<hr>
 <p><%= link_to "开始报名", new_event_registration_path(@event), :class => "btn btn-primary" %></p>
+
+
+<script>
+// js for Event images
+$(document).on("turbolinks:load", function () {
+    $(".img-toggle").on('click', function () {
+        var image = $(this).attr('src');
+        $('#myModal').on('show.bs.modal', function () {
+            $("#img-modal").attr("src", image);
+        });
+    });
+});
+</script>
