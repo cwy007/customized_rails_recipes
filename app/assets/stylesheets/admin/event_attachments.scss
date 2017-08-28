@@ -1,3 +1,18 @@
 // Place all the styles related to the admin::event_attachments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// styles for admin event attachment show page
+img.event-attachment {
+  border-radius: 15%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0;
+}
+
+// styles for event attachment description
+.danger {
+  background-color: #DDFFDD;
+  border-left: 6px solid #4CAF50;
+  padding: 3px 6px 3px 6px;
+}

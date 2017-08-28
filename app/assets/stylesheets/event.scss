@@ -1,15 +1,12 @@
-
-// styles for event attachment
-img.event-attachment {
-  border-radius: 15%;
-  width: 28px;
-  height: 28px;
-  margin: -14px 0;
+// styles for admin/events/index
+.sortable .sortable_icon {
+  border: none;
+  color: #ECECEC;
+  font-size: 20px;
+  cursor: move;
+  padding-right: 10px;
 }
 
-// styles for event attachment description
-.danger {
-  background-color: #DDFFDD;
-  border-left: 6px solid #4CAF50;
-  padding: 3px 6px 3px 6px;
+.sortable .sortable_icon:hover{
+  color: #C9302C;
 }
