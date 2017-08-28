@@ -22,12 +22,12 @@
 <h2>Event Images</h2>
 <% if @event.images.present? %>
 
-  <% @event.images.each_with_index do |image, i| %>
-    <!-- Trigger the modal with a button -->
-    <span href="" data-toggle="modal" data-target="#myModal">
-      <%= image_tag(image.url, :class => "img-toggle thumbnail thumbnail-sm", :style => "display: inline; cursor: pointer;") %>
-    </span>
-  <% end %>
+  <!-- Trigger the modal with a button -->
+  <div href="" data-toggle="modal" data-target="#myModal">
+    <% @event.images.each_with_index do |image, i| %>
+      <%= image_tag(image.url, :class => "img-toggle thumbnail thumbnail-sm") %>
+    <% end %>
+  </div>
 
   <!-- Modal -->
   <div id="myModal" class="modal fade event-images" role="dialog">
@@ -40,7 +40,7 @@
           <h4 class="modal-title" style="display: block;"><%= @event.name %></h4>
         </div>
         <div class="modal-body">
-          <image id="img-modal" class="image-response" src="" style="width: 100%;" />
+          <image id="img-modal" class="image-response" src="" />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
