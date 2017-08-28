@@ -14,54 +14,29 @@
 </h1>
 
 <!-- Event Status & Category -->
-<h2><%= t(@event.status, :scope => "event.status") %></h2>
+<h2>
+  <label class="label label-default mr10">
+    <%= t(@event.status, :scope => "event.status") %>
+  </label>
 
-<h2><%= @event.category.try(:name) %></h2>
+  <label class="label label-default mr10">
+    <%= @event.category.try(:name) %>
+  </label>
+</h2>
 
 <!-- Event Images -->
 <h2>Event Images</h2>
-<% if @event.images.present? %>
-
-  <!-- Trigger the modal with a button -->
-  <div href="" data-toggle="modal" data-target="#myModal">
-    <% @event.images.each_with_index do |image, i| %>
-      <%= image_tag(image.url, :class => "img-toggle thumbnail thumbnail-sm") %>
-    <% end %>
-  </div>
-
-  <!-- Modal -->
-  <div id="myModal" class="modal fade event-images" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="display: block;"><%= @event.name %></h4>
-        </div>
-        <div class="modal-body">
-          <image id="img-modal" class="image-response" src="" />
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-<% end %>
+<%= render "event_images" %>
 
 <!-- Event Attachment -->
 <h2>Attachments</h2>
-<ul>
-  <% @event.attachments.each do |a| %>
-    <li><%= link_to a.description, a.attachment.url, :target => "_blank" %></li>
-  <% end %>
-</ul>
-<hr>
+<%= render "event_attachments" %>
 
 <!-- Event Description -->
-<%= sanitize @event.description %>
+<% if @event.description.present? %>
+  <hr>
+  <%= sanitize @event.description %>
+<% end %>
 
 <script>
 // js for Event images

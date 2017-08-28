@@ -6,6 +6,19 @@
   margin: 0px 0;
 }
 
+// common margin setup
+.mr10 { margin-right: 10px; }
+.ml10 { margin-left: 10px; }
+
+// common styles for thumbnail
+.thumbnail-sm {
+  height: 50px;
+}
+
+.thumbnail-md {
+  height: 200px;
+}
+
 // style for bootstrap modal userd for showing big image
 // styles for Event images model
 // style for admin/users/index user logo
