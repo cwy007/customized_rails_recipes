@@ -4,36 +4,14 @@
   <h1><%= t("admin.event_list") %></h1>
 </div>
 
-<%= form_tag admin_events_path, :method => :get do %>
-  <fieldset style="border: 2px solid #bbb; padding: 10px; margin-bottom: 10px;">
-    <p><% Event::STATUS.each do |s| %>
-      <label>
-        <%= check_box_tag "statuses[]", s, Array(params[:statuses]).include?(s) %> <!-- NOTE: name: statuses[], value: s, checked: judge？ true or false -->
-        <%= t(s, :scope => "event.status") %>
-        (<%= Event.all.by_status(s).size %>)
-      </label>
-      <% end %></p>
-
-      <p><% @categories.each do |c| %>
-        <label>
-          <% if c.events.where( :category_id => c.id ).size != 0 %>
-          <%= check_box_tag "category_ids[]", c.id, Array(params[:category_ids]).include?(c.id.to_s) %> <!-- NOTE: Array() avoid NoMethodError nil.method -->
-          <%= c.name %> (<%= c.events.where( :category_id => c ).size %>)
-          <% end %>
-        </label>
-        <% end %></p>
-
-        <p class="text-right">
-          <%= submit_tag t("admin.submit_filter"), :class => "btn btn-primary" %>
-        </p>
-  </fieldset>
-<% end %>
+<!-- Filter by event status and category -->
+<%= render "filter_check_box" %>
 
 <%= form_tag bulk_update_admin_events_path, :class => "form-inline" do %>
   <table class="table">
     <thead>
       <tr>
-        <!-- name value checked id -->
+        <!-- check_box_tag(name, value = "1", checked = false, options = {}) -->
         <th><%= check_box_tag "全选", "1", false, :id => "toggle_all" %></th>
         <th>Event Name</th>
         <th>Status</th>
@@ -42,34 +20,7 @@
       </tr>
     </thead>
     <tbody class="sortable">
-      <% @events.each do |event| %>
-        <tr data-reorder-url="<%= reorder_admin_event_path(event) %>">
-          <td>
-            <%= check_box_tag "ids[]", event.id %>
-          </td>
-          <td>
-            <span class="sortable_icon">☰</span>
-            <%= link_to event.name, admin_event_path(event) %>
-          </td>
-          <td><%= t(event.status, :scope => "event.status") %></td>
-          <td><%= event.category.try(:name) %></td>
-          <td>
-            <%= link_to  reorder_admin_event_path(event, :position => :first), :method => :post, :class => "btn btn-default btn-sm" do %>
-              <%= t("admin.top") %>
-              <span class="glyphicon glyphicon-arrow-up"></span>
-            <% end %>
-            <%= link_to reorder_admin_event_path(event, :position => :last), :method => :post, :class => "btn btn-default btn-sm" do %>
-              <%= t("admin.bottom") %>
-              <span class="glyphicon glyphicon-arrow-down"></span>
-            <% end %>
-            <%= link_to t("admin.registrations"), admin_event_registrations_path(event), :class => "btn btn-default btn-sm" %>
-            <%= link_to t("admin.tickets"), admin_event_tickets_path(event), :class => "btn btn-default btn-sm" %>
-            <%= link_to content_tag(:i, " #{t("admin.attachments")}", :class => "glyphicon glyphicon-picture"), admin_event_attachments_path(event), :class => "btn btn-default btn-sm" %>
-            <%= link_to t("admin.edit"), edit_admin_event_path(event), :class => "btn btn-default btn-sm" %>
-            <%= link_to t("admin.delete"), admin_event_path(event), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger btn-sm" %>
-          </td>
-              </tr>
-      <% end %>
+      <%= render :partial => "event_item", :collection => @events, :as => :event %>
     </tbody>
   </table>
 
