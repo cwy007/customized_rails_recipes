@@ -1,0 +1,12 @@
+<tr>
+  <td><%= r.id %></td>
+  <td><%= r.ticket.name %></td>
+  <td><%= r.name %></td>
+  <td><%= t(r.status, :scope => "registration.status") %></td>
+  <td><%= r.email %></td>
+  <td><%= r.created_at %></td>
+  <td>
+    <%= link_to "Edit", edit_admin_event_registration_path(@event, r), :class => "btn btn-default" %>
+    <%= link_to "Delete", admin_event_registrations_path(@event, r), :method => :delete, :data => { :confirm => "Are you sure?"}, :class => "btn btn-danger" %>
+  </td>
+</tr>
