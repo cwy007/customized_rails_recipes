@@ -1,0 +1,29 @@
+<div class="form-group">
+  <%= f.label :time_zone %>
+  <%= f.time_zone_select :time_zone %>
+</div>
+
+<div class="form-group">
+  <p>
+    <%= f.label :logo %>
+    <%= f.file_field :logo, :class => "form-control" %>
+  </p>
+
+  <% if @user.logo.present? %>
+    <%= link_to image_tag(@user.logo.url(:small), :class => "thumbnail", :style => "display: inline;"), @user.logo.url, :target => "_blank" %>
+    <p>
+      <label>
+        <%= f.check_box :remove_logo %> 移除图片
+        <%= f.object.logo.filename %>
+      </label>
+    </p>
+  <% end %>
+</div>
+
+<%= f.fields_for :profile do |ff| %>
+  <%= render :partial => "profile_form", :locals => { :ff => ff } %>
+<% end %>
+
+<div class="form-group">
+   <%= f.submit "Save", :class => "btn btn-primary" %>
+</div>

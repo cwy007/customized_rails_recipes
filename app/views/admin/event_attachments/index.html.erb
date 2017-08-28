@@ -14,16 +14,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @attachments.each do |attachment| %>
-      <tr>
-        <td><%= link_to attachment.id, admin_event_attachment_path(@event, attachment) %></td>
-        <td><%= link_to image_tag(attachment.attachment.url(:small), :class => "event-attachment"), admin_event_attachment_path(@event, attachment) %></td>
-        <td><%= attachment.description %></td>
-        <td>
-          <%= link_to "Edit", edit_admin_event_attachment_path(@event, attachment), :class => "btn btn-default btn-sm" %>
-          <%= link_to "Delete", admin_event_attachment_path(@event, attachment), :method => :delete, :class => "btn btn-danger btn-sm" %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render :partial => "attachment_item", :collection => @attachments, :as => :attachment %>
   </tbody>
 </table>
