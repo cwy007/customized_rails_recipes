@@ -15,11 +15,11 @@
 
 <!-- Event Status & Category -->
 <h2>
-  <label class="label label-default mr10">
+  <label class="label label-default mgr10">
     <%= t(@event.status, :scope => "event.status") %>
   </label>
 
-  <label class="label label-default mr10">
+  <label class="label label-default mgr10">
     <%= @event.category.try(:name) %>
   </label>
 </h2>

@@ -43,42 +43,7 @@
   <p><%= f.text_field :remote_logo_url, :placeholder => "Logo 图片网址: https://www.example.com/.../picture.jpg", :class => "form-control" %></p>
 </div>
 
-<div class="from-group">
-  <p>
-    <%= f.label :logo %>
-    <%= f.file_field :logo, :class => "form-control" %>
-  </p>
-
-  <%= link_to image_tag(@event.logo.url(:small), :class => "thumbnail", :style => "display: inline;"), @event.logo.url, :target => "_blank" if @event.logo? %>
-
-  <% if f.object.logo.present? %>
-    <p>
-      <label class="label label-danger">
-        <%= f.check_box :remove_logo %> 删除图档 Logo
-      </label>
-      <%= link_to f.object.logo.filename, f.object.logo.url, :target => "_blank" %>
-    </p>
-    <hr>
-  <% end %>
-</div>
-
-<div class="form-group">
-  <p>
-    <%= f.label :images %>             <!-- NOTE file_field -->
-    <%= f.file_field :images, :multiple => true, :class => "form-control" %>
-  </p>
-
-  <% if f.object.images.present? %>
-    <p>
-      <label class="label label-danger">
-        <%= f.check_box :remove_images %> 删除图档 images
-      </label>
-    </p>
-    <% f.object.images.each do |image| %>
-      <%= link_to image.filename, image.url, :target => "_blank" %> <br>
-    <% end %>
-  <% end %>
-</div>
+<%= render :partial => "form_for_logo_and_images", :locals => { :f => f } %>
 
 <div class="form-group">
   <%= f.label :description %>
@@ -86,23 +51,7 @@
 </div>
 
 <%= f.nested_fields_for :attachments do |ff| %>
-  <fieldset style="border-left: 5px solid #bbb; margin-bottom: 10px; padding: 10px">
-    <legend>Attachment</legend>
-    <div class="form-group">
-      <%= ff.label :attachment %>
-      <%= ff.file_field :attachment, :class => "form-control" %>
-      <% if ff.object.attachment.present? %>
-        已上传档案 <%= link_to ff.object.description, ff.object.attachment.url, :target => "_blank" %>
-      <% end %>
-    </div>
-
-    <div class="form-group">
-      <%= ff.label :description %>
-      <%= ff.text_field :description, :class => "form-control" %>
-    </div>
-
-    <%= ff.remove_nested_fields_link "移除这个档案", :class => "btn btn-danger" %>
-  </fieldset>
+  <%= render :partial => "nested_fields_for_attachments", :locals => { :ff => ff } %>
 <% end %>
 
 <p class="text-right">
@@ -110,25 +59,7 @@
 </p>
 
 <%= f.nested_fields_for :tickets do |ff| %>
-  <fieldset style="border-left: 5px solid #bbb; margin-bottom: 10px; padding: 10px;">
-    <legend>Ticket</legend>
-    <div class="form-group">
-      <%= ff.label :name %>
-      <%= ff.text_field :name, :class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= ff.label :price %>
-      <%= ff.number_field :price, :class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= ff.label :description %>
-      <%= ff.text_area :description, :class => "form-control" %>
-    </div>
-
-  </fieldset>
-  <%= ff.remove_nested_fields_link "移除这个票种", :class => "btn btn-danger btn-sm" %>
+  <%= render :partial => "nested_fields_for_tickets", :locals => { :ff => ff } %>
 <% end %>
 
 <p class="text-right">
@@ -155,5 +86,4 @@
     size: "ls",
     iconName: "glyphicon glyphicon-picture"
   })
-
 </script>
