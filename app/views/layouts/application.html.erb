@@ -6,12 +6,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" href="/images/favicon.png">
+
   </head>
 
   <body>
     <div class="container" id="wrapper">
       <%= render "common/navbar" %>
-      
+
       <div id="content">
         <%= render "common/flashes" %>
         <%= yield %>
