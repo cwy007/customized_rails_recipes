@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'closure_tree'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
@@ -18,7 +19,7 @@ gem 'rails-i18n'
 gem "devise-i18n"
 # Use select2-rails for beautifing f.select UI
 gem "select2-rails"
-# Use nested_form_fields automatically add event ticket form 
+# Use nested_form_fields automatically add event ticket form
 gem "nested_form_fields"
 # Use bootstrap-datepicker-rails for beautifing date form field UI
 gem 'bootstrap-datepicker-rails'

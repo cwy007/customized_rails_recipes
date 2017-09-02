@@ -34,26 +34,6 @@ a:active {
   text-decoration: none;
 }
 
-.nav.nav-pills {
-  li > a {
-    color: red;
-    padding: 0.4px 10px;
-    margin-right: 10px;
-  }
-  li.active > a {
-    background-color: #F5F5F5;
-    border: 1px solid red;
-
-    &:focus,
-    &:hover {
-      color: red;
-      background-color: #F5F5F5;
-      border: 1px solid red;
-
-    }
-  }
-}
-
 // style for bootstrap modal userd for showing big image
 // styles for Event images model
 // style for admin/users/index user logo
