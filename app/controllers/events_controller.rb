@@ -7,7 +7,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.only_available.find_by_friendly_id!(params[:id])
     @comment = Comment.new
-    @comments = @event.comments
+    comments = @event.comments
+    @comments = comments.hash_tree
   end
 
 end

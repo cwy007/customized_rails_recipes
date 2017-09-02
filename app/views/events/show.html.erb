@@ -36,8 +36,8 @@
 <%= render "event_comments/form" %>
 
 <!-- @event.comments index -->
-<%= render partial: "event_comments/comment", collection: @comments, as: :comment %>
 
+<%= comments_tree_for @comments %>
 
 <script>
 // js for Event images

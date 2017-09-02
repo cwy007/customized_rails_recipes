@@ -3,10 +3,17 @@ class EventCommentsController < ApplicationController
   before_action :find_event
 
   def create
-    @comment = @event.comments.new(comment_params)
+    if params[:comment][:parent_id].to_i > 0
+      parent = @event.comments.find_by_id(params[:comment].delete(:parent_id))
+      @comment = parent.children.build(comment_params)
+    else
+      @comment = @event.comments.new(comment_params)
+    end
     @comment.user = current_user
-
+    @comment.event = @event
+    
     if @comment.save
+
       flash[:notice] = "comment 新建成功"
     end
     redirect_to event_path(@event)
@@ -28,7 +35,7 @@ class EventCommentsController < ApplicationController
     flash[:alert] = "comment 已经删除"
     redirect_to event_path(@event)
   end
-  
+
   private
 
   def find_event

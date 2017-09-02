@@ -1,5 +1,6 @@
 <div class="well well-sm">
   <div class="tab-content">
+
     <div id="comment-<%= comment.id %>" class="tab-pane fade in active">
       <div class="media">
         <div class="media-left">
@@ -31,13 +32,10 @@
           <p><%= simple_format comment.body %></p>
         </div>
       </div>
-      <%= form_for @comment, url: event_comments_path(@event), method: :post do |f| %>
-        <div class="form-group">
-          <%= f.text_area :body, class: "form-control" %>
-        </div>
 
-        <%= f.submit "Submit", class: "btn btn-primary btn-xs" %>
-      <% end %>
+      <!-- comment reply form -->
+      <%= render "event_comments/form", from_reply_form: true, parent: comment %>
+
     </div>
     <div id="edit-<%= comment.id %>" class="tab-pane fade">
       <%= form_for comment, url: event_comment_path(@event,comment), method: :put do |f| %>
