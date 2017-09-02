@@ -8,21 +8,29 @@
     color: red;
     padding: 0.4px 10px;
     margin-right: 10px;
+    &:hover {
+      background-color: #FFFFFF;
+    }
   }
   li.active > a {
-    background-color: #F5F5F5;
+    background-color: #FFFFFF;
     border: 1px solid red;
 
     &:focus,
     &:hover {
       color: red;
-      background-color: #F5F5F5;
       border: 1px solid red;
 
     }
   }
 }
 
+.panel-comment,
+.well-comment {
+  background-image: image-url("/images/white_wall.png");
+}
+
+// comment layout
 .replies {
   margin-left: 50px;
 }

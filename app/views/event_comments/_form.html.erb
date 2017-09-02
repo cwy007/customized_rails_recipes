@@ -1,6 +1,6 @@
-<div class="panel panel-info">
-  <div class="panel-body bg-info">
-    <%= form_for @comment, url: event_comments_path(@event), method: :post do |f| %>
+<div class="panel panel-comment">
+  <div class="panel-body">
+      <%= form_for @comment, url: event_comments_path(@event), method: :post do |f| %>
 
       <% from_reply_form ||= nil %>
       <% if from_reply_form %>
@@ -8,12 +8,12 @@
       <% else %>
         <%= f.hidden_field :parent_id, value: 0 %>
       <% end %>
-      
+
       <div class="form-group">
         <%= f.text_area :body, class: "form-control" %>
       </div>
 
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit "Submit", class: "btn btn-primary btn-xs" %>
     <% end %>
   </div>
 </div>
