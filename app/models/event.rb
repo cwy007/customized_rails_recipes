@@ -6,6 +6,8 @@ class Event < ApplicationRecord
   include RankedModel
   ranks :row_order
 
+  has_many :comments, dependent: :destroy 
+
   has_many :registrations, :dependent => :destroy
 
   has_many :tickets, :dependent => :destroy, :inverse_of => :event

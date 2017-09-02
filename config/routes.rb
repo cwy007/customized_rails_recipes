@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :events do
+    resources :comments, controller: "event_comments"
     resources :registrations do
       member do
         get 'steps/1' => 'registrations#step1', :as => :step1

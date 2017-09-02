@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         
+
   mount_uploader :logo, UserLogoUploader
 
   has_many :memberships
@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_one :profile
   accepts_nested_attributes_for :profile
+
+  has_many :comments
 
   def display_name
     self.email.split("@").first
