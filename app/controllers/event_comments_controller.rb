@@ -12,6 +12,23 @@ class EventCommentsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def update
+    @comment = @event.comments.find(params[:id])
+
+    if @comment.update(comment_params)
+      flash[:notice] = "comment 修改成功"
+    end
+    redirect_to event_path(@event)
+  end
+
+  def destroy
+    @comment = @event.comments.find(params[:id])
+
+    @comment.destroy
+    flash[:alert] = "comment 已经删除"
+    redirect_to event_path(@event)
+  end
+  
   private
 
   def find_event

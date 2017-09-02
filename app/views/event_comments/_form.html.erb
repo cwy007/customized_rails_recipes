@@ -1,0 +1,11 @@
+<div class="panel panel-info">
+  <div class="panel-body bg-info">
+    <%= form_for @comment, url: event_comments_path(@event), method: :post do |f| %>
+      <div class="form-group">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+
+      <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
