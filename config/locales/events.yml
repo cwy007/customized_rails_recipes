@@ -1,0 +1,12 @@
+# validation 验证失败时，在提示信息中显示。
+# eg：活动名称不能为空字符
+
+zh-CN:
+  activerecord:
+    models:
+      event: 活动
+    attributes:
+      event:
+        name: "活动名称"
+        description: "描述"
+        status: 活动状态

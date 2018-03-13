@@ -1,0 +1,38 @@
+<h1 class="text-center">Admin Users</h1>
+
+<div class="row" style="margin-bottom: 30px;">
+  <div class="col-md-4">
+    <%= search_form_for @q, :url => admin_users_path do |f| %>
+      <div class="input-group">
+        <%= f.search_field :email_cont, :placeholder => "E-mail", :class => "form-control" %>
+        <div class="input-group-btn">
+          <%= f.submit :class => "btn btn-default" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>User Logo</th>
+    <th>Email</th>
+    <th>Groups</th>
+    <th>Actions</th>
+  </tr>
+  
+  <%= render :partial => "user_item", :collection => @users, :as => :user %>
+</table>
+
+<script>
+// js for user logo
+$(document).on("turbolinks:load", function () {
+    $(".img-toggle").on('click', function () {
+        var image = $(this).attr('src');
+        $('#myModal').on('show.bs.modal', function () {
+            $("#img-modal").attr("src", image);
+        });
+    });
+});
+</script>

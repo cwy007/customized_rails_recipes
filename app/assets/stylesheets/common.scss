@@ -1,0 +1,64 @@
+// small image
+.img-sm {
+  border-radius: 15%;
+  width: 28px;
+  height: 28px;
+  margin: 0px 0;
+}
+
+// common margin setup
+.mg10 { margin: 10px; }
+.mgr10 { margin-right: 10px; }
+.mgl10 { margin-left: 10px; }
+.mgt10 { margin-top: 10px; }
+.mgb10 { margin-bottom: 10px; }
+
+// common styles for thumbnail
+.thumbnail-sm {
+  height: 50px;
+}
+
+.thumbnail-md {
+  height: 200px;
+}
+
+// styles for website links
+a {
+  color: #03A9F4;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: #0288D1;
+  text-decoration: none;
+}
+
+// style for bootstrap modal userd for showing big image
+// styles for Event images model
+// style for admin/users/index user logo
+  .img-toggle{
+    display: inline;
+    margin: .5em .6em .5em 0;
+    cursor: pointer;
+  }
+
+  .img-toggle:hover {
+    box-shadow: 0px 0px 1px 1px #0288D1 ;
+  }
+
+  #img-modal {
+    max-width: 100%;
+    max-height: 300px;
+    // center img
+    margin: 0 auto;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .modal-dialog {
+      max-width: 1200px;
+      width: 600px;
+      height: 400px;
+    }
+  }

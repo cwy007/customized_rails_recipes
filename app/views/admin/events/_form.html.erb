@@ -1,11 +1,10 @@
 <% if @event.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this person from being saved:</h2>
-
+    <h2><%= t('errors.template.header', :model => Event.model_name.human, :count => @event.errors.count) %></h2>
     <ul>
-    <% @event.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
@@ -16,6 +15,75 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :description %>
-  <%= f.text_area :description, :class => "form-control" %>
+  <%= f.label :friendly_id %>
+  <%= f.text_field :friendly_id, :required => true, :class => "form-control" %>
+  <p class="help-block">限小写数字及横线，将作为网址的一部分</p>
 </div>
+
+<div class="form-group">
+  <%= f.label :status %>
+  <!-- <%= f.select :status, Event::STATUS.map{ |s| [t(s, :scope => "event.status"), s] }, {}, :class => "form-control" %> -->
+  <div class="btn-group" data-toggle="buttons">
+    <% Event::STATUS.each do |status| %>
+      <label class="btn btn-default <%= (status == f.object.status)? 'active' : '' %>">
+        <%= f.radio_button :status, status %>
+        <%= t(status, :scope => "event.status") %>
+      </label>
+    <% end %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :category_id %>
+  <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <label>My Logo URL:</label>
+  <p><%= f.text_field :remote_logo_url, :placeholder => "Logo 图片网址: https://www.example.com/.../picture.jpg", :class => "form-control" %></p>
+</div>
+
+<%= render :partial => "form_for_logo_and_images", :locals => { :f => f } %>
+
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.cktext_area :description, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini', language: 'zh-CN' } %>
+</div>
+
+<%= f.nested_fields_for :attachments do |ff| %>
+  <%= render :partial => "nested_fields_for_attachments", :locals => { :ff => ff } %>
+<% end %>
+
+<p class="text-right">
+  <%= f.add_nested_fields_link :attachments, "新增档案", :class => "btn btn-default" %>
+</p>
+
+<%= f.nested_fields_for :tickets do |ff| %>
+  <%= render :partial => "nested_fields_for_tickets", :locals => { :ff => ff } %>
+<% end %>
+
+<p class="text-right">
+  <%= f.add_nested_fields_link :tickets, "新增票种", :class => "btn btn-default" %>
+</p>
+
+<script type="text/javascript">
+  $("#event_category_id").select2( { theme: "bootstrap" } );
+
+  // js for file upload button
+  $("#event_logo").filestyle({
+    input: false,
+    buttonText: "从本地上传活动 logo 图片",
+    buttonName: "btn-info",
+    size: "sm",
+    iconName: "glyphicon glyphicon-picture"
+  });
+
+  // js for event images upload button
+  $("#event_images").filestyle({
+    input: false,
+    buttonText: "上传活动图片images",
+    buttonName: "btn-primary",
+    size: "ls",
+    iconName: "glyphicon glyphicon-picture"
+  })
+</script>

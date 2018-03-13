@@ -1,0 +1,66 @@
+<div class="well well-sm well-comment">
+  <div class="tab-content">
+
+    <div id="comment-<%= comment.id %>" class="tab-pane fade in active">
+      <div class="media">
+        <div class="media-left">
+          <% if comment.user.logo.present? %>
+          <%= image_tag(comment.user.logo.url(:thumb), class: "thumbnail thumbnail-sm") %>
+          <% else %>
+          <img src="<%= image_url 'default_user_logo.png' %>" alt="user logo" class: "thumbnail thumbnail-sm">
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= comment.user.display_name %></h4>
+          <p class="text-muted"><%= comment.created_at.to_s(:long) %></p>
+          <p><%= simple_format comment.body %></p>
+        </div>
+      </div>
+    </div>
+    <div id="reply-<%= comment.id %>" class="tab-pane fade">
+      <div class="media">
+        <div class="media-left">
+          <% if comment.user.logo.present? %>
+          <%= image_tag(comment.user.logo.url(:thumb), class: "thumbnail thumbnail-sm") %>
+          <% else %>
+          <img src="<%= image_url 'default_user_logo.png' %>" alt="user logo" class: "thumbnail thumbnail-sm">
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= comment.user.display_name %>
+          </h4>
+          <p class="text-muted"><%= comment.created_at.to_s(:long) %></p>
+          <p><%= simple_format comment.body %></p>
+        </div>
+      </div>
+
+      <!-- comment reply form -->
+      <%= render "event_comments/form", from_reply_form: true, parent: comment %>
+
+    </div>
+    <div id="edit-<%= comment.id %>" class="tab-pane fade">
+      <!-- <%= render "event_comments/form", form_edit_form: true %> -->
+      <%= form_for comment, url: event_comment_path(@event,comment), method: :put do |f| %>
+        <div class="form-group">
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+
+        <%= f.submit "Submit", class: "btn btn-primary btn-xs" %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if comment.leaf? %>
+    <p><small class="text-muted text-success">还没有人回复--来互动一下！</small></p>
+  <% end %>
+
+  <ul class="nav nav-pills">
+    <li class="active" ><a data-toggle="pill" href="#comment-<%= comment.id %>">show</a></li>
+    <li><a data-toggle="pill" href="#reply-<%= comment.id %>">reply</a></li>
+    <% if current_user && comment.user == current_user %>
+      <li><a data-toggle="pill" href="#edit-<%= comment.id %>">edit</a></li>
+      <li><%= link_to "delete", event_comment_path(@event,comment), method: :delete %></li>
+    <% end %>
+  </ul>
+</div>

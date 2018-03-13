@@ -1,0 +1,39 @@
+// Place all the styles related to the event_comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// styles for comment button
+.nav.nav-pills {
+  li > a {
+    color: red;
+    padding: 0.4px 10px;
+    margin-right: 10px;
+    &:hover {
+      background-color: #FFFFFF;
+    }
+  }
+  li.active > a {
+    background-color: #FFFFFF;
+    border: 1px solid red;
+
+    &:focus,
+    &:hover {
+      color: red;
+      border: 1px solid red;
+
+    }
+  }
+}
+
+.panel-comment,
+.well-comment {
+  background-image: image-url("/images/white_wall.png");
+}
+
+// comment layout
+.replies {
+  margin-left: 50px;
+}
+.replies .replies .replies .replies .replies {
+  margin-left: 0;
+}

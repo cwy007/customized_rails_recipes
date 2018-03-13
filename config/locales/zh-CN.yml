@@ -1,0 +1,53 @@
+zh-CN:
+  errors:
+    messages:
+      carrierwave_processing_error: 处理错误
+      carrierwave_integrity_error: 文件类型不正确
+      carrierwave_download_error: 下载错误
+      extension_whitelist_error: "不可上传 %{extension} 文件, 可上传文件类型为: %{allowed_types}"
+      extension_blacklist_error: "不可上传 %{extension} 文件, 不可上传文件类型为: %{prohibited_types}"
+      content_type_whitelist_error: "不可上传 %{content_type} 文件"
+      content_type_blacklist_error: "不可上传 %{content_type} 文件"
+      rmagick_processing_error: "rmagick 错误, 也许上传的文件不是图片? 原错误: %{e}"
+      mini_magick_processing_error: "MiniMagick 错误, 也许上传的文件不是图片? 原错误: %{e}"
+      min_size_error: "文件大小应大于 %{min_size}"
+      max_size_error: "文件的大小应小于 %{max_size}"
+  registration:
+    status:
+      pending: 报名尚未完成
+      confirmed: 报名成功
+  bulk_update: 批次编辑
+  bulk_delete: 批次删除
+  event:
+    status:
+      draft: 草稿
+      public: 公开
+      private: 私密
+  navbar:
+    brand: 全栈营 Rails Recipes 前台
+    events: 活动一览
+    console: 前台面板
+    my_profile: 我的个人资料
+    edit_my_profile: 修改个人资料
+    reset_password: 修改密码
+    sign_up: 注册
+    sign_in: 登入
+    sign_out: 登出
+  event_list: 活动列表
+  admin:
+    new_event: 新建活动
+    submit_filter: 送出筛选
+    top: 置顶
+    bottom: 置底
+    edit: 修改
+    delete: 删除
+    registrations: 注册者
+    tickets: 票型
+    attachments: 活动图片
+    navbar:
+      brand: 全栈营 Rails Recipes 后台
+      events: 活动管理
+      users: 用户管理
+      console: 管理员面板
+    event_list: 活动列表管理
+  hello: "亲～ %{name} 你好："

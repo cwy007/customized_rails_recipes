@@ -1,0 +1,30 @@
+<h1><%= @event.name %> / Registrations</h1>
+
+<p class="text-right">
+  <%= link_to "New Registration", new_admin_event_registration_path(@event), :class => "btn btn-primary" %>
+</p>
+
+<div class="submenu">
+  <%= render "submenu" %>
+</div>
+
+<%= search_form_for @q, :url => admin_event_registrations_path(@event) do |f| %>
+  <%= render :partial => "search_field", :locals => { :f => f } %>
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Ticket</th>
+    <th>Name</th>
+    <th>Status</th>
+    <th>E-mail</th>
+    <th>Created_at</th>
+    <th>Actions</th>
+  </tr>
+  <%= render :partial => "registration_item", :collection => @registrations, :as => :r %>
+</table>
+
+<%= @registrations_count %>
+
+<%= paginate @registrations %>

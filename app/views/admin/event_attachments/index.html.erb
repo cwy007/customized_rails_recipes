@@ -1,0 +1,19 @@
+<h1 class="text-center"><%= @event.name %> / Attachments</h1></h1>
+
+<div>
+  <%= link_to "New Attachment", new_admin_event_attachment_path(@event), :class => "btn btn-primary pull-right" %>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Attachment</th>
+      <th width="60%;">Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => "attachment_item", :collection => @attachments, :as => :attachment %>
+  </tbody>
+</table>

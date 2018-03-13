@@ -1,0 +1,107 @@
+// start of styles for normal navbar
+nav.navbar.navbar-default {
+  background-color: #e5e5e5;
+
+  // styles for navbar links
+  a {
+    color: #000;
+  }
+
+  // styles for navbar link:selected
+  div.navbar-header > span.selected > a,
+  #navbar > ul:nth-child(1) > li.selected > a ,
+  #navbar > ul.nav.navbar-nav.navbar-right > li.selected> a,
+  #navbar > ul.nav.navbar-nav.navbar-right > li.dropdown.open > a {
+    background-color: #1ecd97;
+    color: #fff;
+  }
+
+  #navbar > ul.nav.navbar-nav.navbar-right {
+    // styles for navbar user logo
+    li > a {
+      img {
+        border-radius: 15%;
+        width: 28px;
+        height: 28px;
+        margin: -14px 0;
+      }
+    }
+
+    //styles for dropdown-menu
+    li > ul {
+      top: 120%;
+      background-image: image-url('/images/citygirl.jpg');
+      li > a:hover {
+        background-color: #1ecd97;
+        color: #fff;
+      }
+    }
+
+    li > ul::before {
+      content: "";
+      border-bottom: 10px solid #3bae47;
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+      position: absolute;
+      top: -10px;
+      right: 16px;
+      z-index: 1000;
+    }
+  }
+}
+// end of styles for normal navbar
+
+// start of styles for admin navbar
+nav.navbar.navbar-inverse {
+  // styles for navbar links
+  a, a:hover {
+    color: #fff;
+  }
+
+  // styles for navbar link:selected
+  div.navbar-header > span.selected > a,
+  #navbar > ul:nth-child(1) > li.selected > a ,
+  #navbar > ul.nav.navbar-nav.navbar-right > li.selected> a,
+  #navbar > ul.nav.navbar-nav.navbar-right > li.dropdown.open > a {
+    background-color: #1ecd97;
+    color: #fff;
+  }
+
+  #navbar > ul.nav.navbar-nav.navbar-right {
+    // styles for navbar user logo
+    li > a {
+      img {
+        border-radius: 15%;
+        width: 28px;
+        height: 28px;
+        margin: -14px 0;
+      }
+    }
+
+    //styles for dropdown-menu
+    li > ul {
+      top: 120%;
+      background-color: #222;
+
+      li > a {
+        color: #fff;
+      }
+      li > a:hover {
+        background-color: #1ecd97;
+        color: #fff;
+      }
+    }
+
+    li > ul::before {
+      content: "";
+      border-bottom: 10px solid #222;
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+      position: absolute;
+      top: -10px;
+      right: 16px;
+      z-index: 1000;
+    }
+  }
+}
+// end of styles for admin navbar

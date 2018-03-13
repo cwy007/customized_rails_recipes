@@ -1,9 +1,16 @@
-<h1>Event List</h1>
+<h1><%= t("event_list") %></h1>
 
-<ul>
-  <% @events.each do |event| %>
-    <li>
-      <%= link_to event.name, event_path(event) %>
-    </li>
-  <% end %>
-</ul>
+<table class="table table-hover">
+  <tbody>
+    <% @events.each do |event| %>
+    <tr>
+      <td>
+        <%= link_to event.name, event_path(event) %>
+      </td>
+      <td>
+        <%= event.created_at.to_s(:ymd) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

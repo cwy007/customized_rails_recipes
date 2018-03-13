@@ -1,4 +1,52 @@
-<h1><%= @event.name %></h1>
+<h1 class="text-center">
+  <% if @event.logo.present? %>
+    <%= link_to image_tag(@event.logo.url(:thumb), :class => "thumbnail", :style => "border-radius: 50%; display: inline; margin: auto; height: 60px; width: 60px;"), @event.logo.url, :target => "_blank" %>
+  <% end %>
+  <%= @event.name %>
+</h1>
 
+<!-- Event Status & Category -->
+<h2>
+  <label class="label label-default mgr10">
+    <%= t(@event.status, :scope => "event.status") %>
+  </label>
 
-<%= simple_format @event.description %>
+  <label class="label label-default mgr10">
+    <%= @event.category.try(:name) %>
+  </label>
+</h2>
+
+<!-- Event Images -->
+<h2>Event Images</h2>
+<%= render "event_images" %>
+
+<!-- Event Attachments -->
+<h2>Attachments</h2>
+<%= render "event_attachments" %>
+
+<% if @event.description.present? %>
+  <hr>
+  <%= sanitize @event.description %>
+<% end %>
+
+<hr>
+<p><%= link_to "开始报名", new_event_registration_path(@event), :class => "btn btn-primary" %></p>
+
+<!-- Event Comment Section -->
+<%= render "event_comments/form" %>
+
+<!-- @event.comments index -->
+
+<%= comments_tree_for @comments %>
+
+<script>
+// js for Event images
+$(document).on("turbolinks:load", function () {
+    $(".img-toggle").on('click', function () {
+        var image = $(this).attr('src');
+        $('#myModal').on('show.bs.modal', function () {
+            $("#img-modal").attr("src", image);
+        });
+    });
+});
+</script>

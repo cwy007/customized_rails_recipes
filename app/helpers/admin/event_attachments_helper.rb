@@ -1,0 +1,2 @@
+module Admin::EventAttachmentsHelper
+end

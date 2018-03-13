@@ -1,0 +1,20 @@
+<h1>Edit User</h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= t('errors.template.header', :model => User.model_name.human, :count => @user.errors.count) %></h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [:admin, @user] do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+<% end %>
+
+<script type="text/javascript">
+$("#user_group_ids").select2({theme: "bootstrap"});
+</script>

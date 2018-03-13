@@ -1,0 +1,13 @@
+<h1 class="text-center"><%= @event.name %> / Edit Attachment</h1>
+
+<%= form_for @attachment, :url => admin_event_attachment_path(@event, @attachment) do |f| %>
+
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <% if @attachment.attachment.present? %>
+    <h4>已上传图片：</h4>
+    <%= image_tag(@attachment.attachment.url(:small), :class => "thumbnail") %>
+  <% end %>
+
+  <%= f.submit "Submit", :data => { :disable_with => "Submitting" }, :class => "btn btn-primary" %>
+<% end %>

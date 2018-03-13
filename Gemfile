@@ -5,13 +5,42 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'closure_tree'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-
+# Use bootstrap-sass as css framework
 gem 'bootstrap-sass'
-
+# Use devise implement login function
 gem 'devise'
+# Use rails-i18n as rails translation
+gem 'rails-i18n'
+# Use devise-i18n as devise translation
+gem "devise-i18n"
+# Use select2-rails for beautifing f.select UI
+gem "select2-rails"
+# Use nested_form_fields automatically add event ticket form
+gem "nested_form_fields"
+# Use bootstrap-datepicker-rails for beautifing date form field UI
+gem 'bootstrap-datepicker-rails'
+# Use autosize-rails for autosizing form f.text_area
+gem 'autosize-rails'
+# Use implement text fiel WYSIWYG editor
+gem 'ckeditor'
+# Use ranked-model for row sorting, top, botton, up, down
+gem 'ranked-model'
+# Use jquery-ui-rails for event drag&drop
+gem 'jquery-ui-rails'
+# Use kaminari for implement pagination
+gem 'kaminari'
+# Use ransack for implement search function
+gem 'ransack'
+# Use carrierwave for file or image uploading
+gem 'carrierwave'
+# Use mini_magick for resizing image
+gem 'mini_magick'
+
+
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -44,9 +73,14 @@ group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # Use rails-erd for analyse model's relations
+  gem 'rails-erd'
+  # Use awesome_rails_console for beautifing rails console
+  gem 'awesome_rails_console'
 end
 
 group :development do
+  # Use faker for generate fake data
   gem 'faker'
 
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -59,3 +93,18 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Please clean up duplicated gems if any.
+# Feel free to remove gems that you don't want to use or if they conflict with other gem dependencies. (you might need to update .pryrc also)
+group :development, :test do
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+end
+
+group :development, :test do
+end
+
+group :development, :test do
+end
