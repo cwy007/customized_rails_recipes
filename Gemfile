@@ -104,6 +104,6 @@ group :development, :test do
   gem 'pry-stack_explorer'
 end
 
-group :development do
+group :production do
   gem 'pg'
 end
