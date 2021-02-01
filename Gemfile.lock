@@ -328,7 +328,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick
   nested_form_fields
-  pg
+  pg (~> 1.2.3)
   pry-byebug
   pry-stack_explorer
   puma (~> 3.0)
