@@ -1,4 +1,20 @@
-# customized_rails_recipes
+# 活动报名系统
+
+用户可以在前台看到活动信息，可以在前台进行报名。管理员可以在后台管理活动资料，用户资料和报名资料
+
+* 技术议题
+  * 自定义Model网址
+  * 多语言设置
+  * 时区设置，格式化日期时间
+  * 表单单选 UI (固定选项无 Model )，表单单选 UI 和 Select2 Plugin，表单多选 UI 和 Select2 Plugin
+  * 避免 N+1 SQL 查询
+  * 嵌套表单（1-to-1），嵌套表单 (1-to-many)
+  * 选日期时间的 UI
+  * 拆开前后台的 CSS 和 JS，Rich Editor 编辑器
+  * 批量编辑（Bulk Editing)，批量删除（Bulk Deleting），自订列表顺序（ranked-model）
+  * 多步骤表单，有条件的表单验证（Conditional Validations ）
+  * 资料筛选和搜索（ransack）
+  * 七牛云图片上传
 
 ## setup
 
