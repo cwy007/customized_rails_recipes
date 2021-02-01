@@ -2,6 +2,8 @@
 
 用户可以在前台看到活动信息，可以在前台进行报名。管理员可以在后台管理活动资料，用户资料和报名资料
 
+[在线演示](https://customised-rails-recipes.herokuapp.com/)
+
 * 技术议题
   * 自定义Model网址
   * 多语言设置
