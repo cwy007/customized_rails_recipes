@@ -39,11 +39,11 @@ gem 'ransack'
 gem 'carrierwave'
 # Use mini_magick for resizing image
 gem 'mini_magick'
-
-
+gem 'qiniu', '>= 6.9.0'
+gem 'carrierwave-qiniu', '~> 1.1.5'
+gem "figaro"
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -77,6 +77,7 @@ group :development, :test do
   gem 'rails-erd'
   # Use awesome_rails_console for beautifing rails console
   gem 'awesome_rails_console'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -103,8 +104,6 @@ group :development, :test do
   gem 'pry-stack_explorer'
 end
 
-group :development, :test do
-end
-
-group :development, :test do
+group :development do
+  gem 'pg'
 end

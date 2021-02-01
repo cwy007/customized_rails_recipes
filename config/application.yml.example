@@ -1,0 +1,12 @@
+production:
+  qiniu_access_key: xxx
+  qiniu_secret_key: xxx-V
+  qiniu_bucket: konata
+  qiniu_bucket_domain: qiniu-konata.chenweiyan.site
+  SECRET_KEY_BASE: "xxx"
+
+development:
+  qiniu_access_key: xxx
+  qiniu_secret_key: xxx-V
+  qiniu_bucket: konata
+  qiniu_bucket_domain: qiniu-konata.chenweiyan.site

@@ -5,7 +5,11 @@ class UserLogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  if Rails.env.production?
+    storage :qiniu
+  elsif Rails.env.development?
+    storage :file
+  end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -30,7 +34,7 @@ class UserLogoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  
+
   version :thumb do
     process resize_to_fill: [200, 200]  # NOTE resize_to_fit & resize_to_limit 保持原图比例
   end
