@@ -27,6 +27,8 @@ git push heroku master
 heroku run rake db:migrate
 heroku run rake db:seed
 heroku open
+
+heroku logs --tail
 ```
 
 ## heroku 支持的 ruby 版本
